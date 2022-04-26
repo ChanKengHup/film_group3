@@ -13,7 +13,6 @@ export const HomeTemplate = (props) => {
         
        <Header/>
 
-      {/* CONTENT */}
       <props.component {...propsRoute} />
 
       <Footer/>
