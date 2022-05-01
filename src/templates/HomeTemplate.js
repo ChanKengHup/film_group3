@@ -12,7 +12,6 @@ export const HomeTemplate = (props) => {
       <Header />
       <HomeCarousel />
 
-      {/* CONTENT */}
       <props.component {...propsRoute} />
 
       <Footer />
