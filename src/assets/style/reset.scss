@@ -1,0 +1,103 @@
+
+.container {
+    max-width: 90%;
+}
+
+/* ------------------- margin  ------------------- */
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.m-r-5 {
+    margin-right: 5px;
+}
+
+.m-l-5 {
+    margin-left: 5px;
+}
+
+
+/* ------------------- padding  ------------------- */
+.p-10-20 {
+    padding: 10px 20px;
+}
+
+.px-10 {
+    padding: 0 10px;
+}
+
+.px-15 {
+    padding: 0 15px;
+}
+
+
+/* ------------------- text  ------------------- */
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ------------------- width  ------------------- */
+.w-full {
+    width: 100%;
+}
+
+/* ------------------- height  ------------------- */
+
+
+/* ------------------- font-size  ------------------- */
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-32 {
+    font-size: 32px;
+}
+
+/* ------------------- font-weight  ------------------- */
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+/* ------------------- button  ------------------- */
+.ant-btn {
+    border-radius: 5px;
+    min-width    : 100px;
+    height       : auto;
+    border       : none;
+}
+
+/* ------------------- flex  ------------------- */
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end;
+}

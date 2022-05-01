@@ -11,8 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-        <HomeTemplate path='/' component={Home} />
-          
+          <HomeTemplate path='/' component={Home} />
         </Switch>
       </div>
     </BrowserRouter>
