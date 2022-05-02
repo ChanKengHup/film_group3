@@ -1,16 +1,17 @@
 import { Button, Modal } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import "../../assets/style/reset.scss";
 import { useSelector, useDispatch } from 'react-redux';
 import Register from '../form/Register';
 import Login from '../form/Login';
 import { UserOutlined } from '@ant-design/icons';
+import LogOut from '../logout/LogOut';
 
 export default function Header() {
   const dispatch = useDispatch()
   const { Component, isVisible } = useSelector(state => state.ModalReducer)
-  const { userLogin } = useSelector(state => state.LoginReducer)
+  const { userLogin } = useSelector(state => state.LogReducer)
   const [title, setTitle] = useState("");
 
   const handleCancel = () => {
@@ -21,7 +22,6 @@ export default function Header() {
   };
 
   const showLogin = () => {
-    // setIsModalVisible(true);
     setTitle("Login");
     dispatch({
       type: 'OPEN_MODAL',
@@ -31,7 +31,6 @@ export default function Header() {
   };
 
   const showRegister = () => {
-    // setIsModalVisible(true);
     setTitle("Register");
     dispatch({
       type: 'OPEN_MODAL',
@@ -40,17 +39,13 @@ export default function Header() {
     })
   };
 
-
   return (
     <HeaderStyled>
       <div className="header d-flex">
         <h1 className="brand fw-700">movieCyber</h1>
         <div className="sign-in-up d-flex">
           {!!userLogin.taiKhoan ?
-            <div className='user-login fs-16 px-15'>
-              <UserOutlined />
-              <p className='user-name m-l-5'>{userLogin.taiKhoan}</p>
-            </div>
+            <LogOut />
             :
             <>
               <Button onClick={showLogin}>
@@ -100,14 +95,6 @@ const HeaderStyled = styled.div`
 
     .ant-btn {
       font-size: 16px;
-    }
-
-    .user-login {
-      color: #000;
-      display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 5px;
     }
   }
 

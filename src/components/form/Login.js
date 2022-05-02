@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Login() {
     const dispatch = useDispatch();
-    const { userLogin } = useSelector(state => state.LoginReducer)
-
+    const { userLogin } = useSelector(state => state.LogReducer)
     const formik = useFormik({
         initialValues: {
             taiKhoan: '',
