@@ -9,10 +9,10 @@ import {quanlyPhimService} from '../../services/QuanlyPhimService.js'
 //call API
 
 
-export const layDanhSachPhimAction =()=>{
+export const layDanhSachPhimAction =(tenPhim='')=>{
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.layDanhSachPhim();
+            let result = await quanlyPhimService.layDanhSachPhim(tenPhim);
             dispatch({
                 type:LAY_DS_PHIM,
                 mangPhim: result.data.content
@@ -54,19 +54,19 @@ export const capNhatPhimUploadAction = (formData) =>{
     return async (dispatch)=>{
         try {
             let result = await quanlyPhimService.capNhatPhimUpload(formData);
-            dispatch(layDanhSachPhimAction())   
             alert('Cập nhật thành công')
             history.push('/admin/films')
+            dispatch(layDanhSachPhimAction())   
         }catch(err){
             console.log('err',err);
         }
     }
 }
 
-export const xoaPhimAction = () => {
+export const xoaPhimAction = (maPhim) => {
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.xoaPhim();
+            let result = await quanlyPhimService.xoaPhim(maPhim);
             alert('Xoá Phim thành công')
             dispatch(layDanhSachPhimAction())  
         }catch(err){

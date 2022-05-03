@@ -2,7 +2,12 @@ import { http } from "../util/setting";
 import { GROUP_ID } from "./TypeService";
 
 class QuanlyPhimService {
-  layDanhSachPhim = ()=>{ return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)};
+  layDanhSachPhim = (tenPhim)=>{ 
+    if(tenPhim.trim() !=''){
+      return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`)
+    }
+    return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
+  };
 
   themPhimUploadHinh = (formData)=>{ 
     return http.post(`/api/QuanLyPhim/ThemPhimUploadHinh`,formData)
@@ -16,7 +21,7 @@ class QuanlyPhimService {
     return http.post(`/api/QuanLyPhim/CapNhatPhimUpload`,formData)
   };
   
-  xoaPhim = ()=>{ return http.delete(`/api/QuanLyPhim/XoaPhim`)};
+  xoaPhim = (maPhim)=>{ return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)};
 
 }
 

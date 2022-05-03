@@ -30,7 +30,7 @@ const Edit = (props) => {
 
   const [img, setImg] = useState('')
   const dispatch = useDispatch();
-
+  console.log(thongTinPhim);
   //lay id (maPhim)
   useEffect(() => {
     let { id } = props.match.params;
@@ -122,8 +122,8 @@ const Edit = (props) => {
       onValuesChange={onFormLayoutChange}
       size={componentSize}
     >
-      <h3>Thêm phim mới</h3>
-      <Form.Item label="Form Size" name="size">
+      <h3>Sửa Thông Tin - <span className='text-primary'>{thongTinPhim.tenPhim}</span> </h3>
+      <Form.Item label="Form Size" name="size" className='mt-4'>
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>
           <Radio.Button value="default">Default</Radio.Button>
@@ -141,7 +141,6 @@ const Edit = (props) => {
       </Form.Item>
       <Form.Item label="Ngày khởi chiếu">
         <DatePicker format={'DD/MM/YYYY'} onChange={handeChangDatePicker} value={moment(formik.values.ngayKhoiChieu)} />
-        {/* value={moment(formik.values.ngayKhoiChieu, 'DD/MM/YYYY')} */}
       </Form.Item>
       <Form.Item label="Đang chiếu">
         <Switch onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />

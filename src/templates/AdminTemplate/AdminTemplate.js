@@ -10,7 +10,6 @@ import {
     MenuFoldOutlined,
     UserOutlined,
     FileOutlined,
-    DesktopOutlined,
 } from '@ant-design/icons';
 import { history } from "../../App";
 import SubMenu from "antd/lib/menu/SubMenu";
@@ -32,7 +31,10 @@ export const AdminTemplate = (props) => {
         });
     };
 
-    useEffect(() => { window.scrollTo(0, 0) })
+    useEffect(() => { 
+        window.scrollTo(0, 0) 
+        
+    })
 
     // if(!localStorage.getItem(USER_LOGIN)){
     //     alert('Bạn không được cấp quyền vào trang này !')
@@ -66,21 +68,19 @@ export const AdminTemplate = (props) => {
                     <div className="logo p-4">
                         <img className="img-fluid" src="http://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="" />
                     </div>
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} >
                         <Menu.Item key="1" icon={<UserOutlined />}>
                             <NavLink to='/admin/users'>Users</NavLink>
                         </Menu.Item>
-                        <SubMenu key='sub1' icon={<FileOutlined />} title='Films'>
+                        <Menu.SubMenu key='sub1' icon={<FileOutlined />} title='Films'>
                             <Menu.Item key="10" icon={<FileOutlined />}>
                                 <NavLink to='/admin/films'>Films</NavLink>
                             </Menu.Item>
                             <Menu.Item key="11" icon={<FileOutlined />}>
                                 <NavLink to='/admin/films/addnew'>Addnews</NavLink>
                             </Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="3" icon={<DesktopOutlined />}>
-                            <NavLink to='/admin/showtimes'>Showtime</NavLink>
-                        </Menu.Item>
+                        </Menu.SubMenu>
+                        
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">

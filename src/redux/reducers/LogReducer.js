@@ -17,6 +17,7 @@ export const LogReducer = (state = stateDefault, action) => {
             return { ...state }
         case 'LOG_OUT_USER':
             localStorage.removeItem('LOGIN_USER');
+            localStorage.removeItem('TOKEN_MOVIE')
             state.userLogin = action.userLogin;
             return { ...state }
         default:
