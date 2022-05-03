@@ -75,12 +75,12 @@ export default function Films() {
             <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
               <EditOutlined />
             </NavLink>
-            <span key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
+            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
               if (window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)) {
                 dispatch(xoaPhimAction(film.maPhim))
               }
-            }} ><DeleteOutlined />
-            </span>
+            }}/>
+            
             <NavLink className='ml-3' key={1} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
               localStorage.setItem('filmParams',JSON.stringify(film))
             }}>
@@ -109,7 +109,7 @@ export default function Films() {
   return (
     <div>
       <h2>Quản Lý Phim</h2>
-      <Button className='mb-3' onClick={() => {
+      <Button className='my-3' type="primary"  onClick={() => {
         history.push('/admin/films/addnew')
       }} >Thêm Phim</Button>
       <Search

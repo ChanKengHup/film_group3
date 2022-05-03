@@ -54,19 +54,19 @@ export const capNhatPhimUploadAction = (formData) =>{
     return async (dispatch)=>{
         try {
             let result = await quanlyPhimService.capNhatPhimUpload(formData);
-            dispatch(layDanhSachPhimAction())   
             alert('Cập nhật thành công')
             history.push('/admin/films')
+            dispatch(layDanhSachPhimAction())   
         }catch(err){
             console.log('err',err);
         }
     }
 }
 
-export const xoaPhimAction = () => {
+export const xoaPhimAction = (maPhim) => {
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.xoaPhim();
+            let result = await quanlyPhimService.xoaPhim(maPhim);
             alert('Xoá Phim thành công')
             dispatch(layDanhSachPhimAction())  
         }catch(err){

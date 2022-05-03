@@ -21,7 +21,7 @@ class QuanlyPhimService {
     return http.post(`/api/QuanLyPhim/CapNhatPhimUpload`,formData)
   };
   
-  xoaPhim = ()=>{ return http.delete(`/api/QuanLyPhim/XoaPhim`)};
+  xoaPhim = (maPhim)=>{ return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)};
 
 }
 

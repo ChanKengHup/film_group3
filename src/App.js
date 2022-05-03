@@ -26,29 +26,14 @@ function App() {
       {/* <Loading /> */}
       <div className="App">
         <HomeTemplate path='/' component={Home} />
-
         <AdminTemplate path='/admin' component={Dashboard} />
         <AdminTemplate path='/admin/users' component={Users} />
         <AdminTemplate path='/admin/films' component={Films} />
         <AdminTemplate path='/admin/films/addnew' component={AddNew} />
         <AdminTemplate path='/admin/films/edit/:id' component={Edit} />
-        <AdminTemplate path='/admin/showtimes' component={ShowTime} />
-
-
-<<<<<<< HEAD
-          <AdminTemplate path='/admin' component={Dashboard} /> 
-          <AdminTemplate path='/admin/users' component={Users} /> 
-          <AdminTemplate path='/admin/films' component={Films} /> 
-          <AdminTemplate path='/admin/films/addnew' component={AddNew} /> 
-          <AdminTemplate path='/admin/films/edit/:id' component={Edit} /> 
-          <AdminTemplate path='/admin/films/showtime/:id/:tenphim' component={ShowTime} /> 
-
-=======
-
-
->>>>>>> 7ec642fc79f5facce2253c81512156abaedda4f3
-      </div>
-    </Router>
+        <AdminTemplate path='/admin/films/showtime/:id/:tenphim' component={ShowTime} />
+      </div >
+    </Router >
   );
 }
 
