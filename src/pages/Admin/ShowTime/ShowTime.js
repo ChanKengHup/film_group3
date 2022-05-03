@@ -1,7 +1,138 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { Form, Cascader, DatePicker, InputNumber, Button, Select } from 'antd';
+import { quanLyRapService } from '../../../services/QuanLyRapService';
+import { useFormik } from 'formik'
+import moment from 'moment';
+import { quanLyDatVeService } from '../../../services/QuanLyDatVeService';
 
-export default function ShowTime() {
+export default function ShowTime(props) {
+
+  const formik = useFormik({
+    initialValues: {
+      maPhim: props.match.params.id,
+      ngayChieuGioChieu: '',
+      maRap: '',
+      giaVe: '',
+    },
+    onSubmit: async (values) => {
+      try {
+        let result = await quanLyDatVeService.taoLichChieu(values);
+
+        alert(result.data.content)
+
+
+      } catch (err) {
+        console.log('err', err.reponse?.data);
+      }
+    }
+  })
+
+  const [state, setState] = useState({
+    heThongRapChieu: [],
+    cumRapChieu: []
+  })
+
+
+  useEffect(async () => {
+    try {
+      let result = await quanLyRapService.layThongTinHeThongRap();
+
+      setState({
+        ...state,
+        heThongRapChieu: result.data.content
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
+
+  const handleChangeHeThongRap = async (value) => {
+    //từ hệ thống rap call api lay thông tin cum rap
+    try {
+      let result = await quanLyRapService.layThongTinCumRap(value)
+      //gán giá trị cụm rạp vào state.cumrap
+      setState({
+        ...state,
+        cumRapChieu: result.data.content
+      })
+    } catch (error) {
+      console.log("error", error.reponse?.data);
+    }
+
+  }
+
+  const handleChangeCumRap = (value) => {
+    formik.setFieldValue('maRap', value)
+  }
+  const onOk = (values) => {
+    formik.setFieldValue('ngayChieuGioChieu', moment(values).format('DD/MM/YYYY HH:mm:ss'))
+    console.log("values", moment(values).format('DD/MM/YYYY HH:mm:ss'))
+  }
+
+  const onChangeDate = (values) => {
+
+    formik.setFieldValue('ngayChieuGioChieu', moment(values).format('DD/MM/YYYY HH:mm:ss'));
+    console.log("values", moment(values).format('DD/MM/YYYY HH:mm:ss'))
+  }
+
+  const onChangeInputNumber = (value) => {
+    formik.setFieldValue('giaVe', value)
+
+  }
+
+  const convertSelecHRP = () => {
+    return state.heThongRapChieu.map((htr) => {
+      return { label: htr.tenHeThongRap, value: htr.maHeThongRap }
+    })
+  }
+
+  let film = {};
+  if (localStorage.getItem('filmParams')) {
+    film = JSON.parse(localStorage.getItem('filmParams'))
+  }
+
   return (
-    <div>ShowTime</div>
+    <Form
+      name="basic"
+      labelCol={{ span: 8 }}
+      wrapperCol={{ span: 16 }}
+      initialValues={{ remember: true }}
+      onSubmitCapture={formik.handleSubmit}
+    >
+      <h3 className=''>Tạo Lịch Chiếu - <span style={{ color: "purple" }}>{props.match.params.tenphim}</span></h3>
+      <div className="row mt-4">
+        <div className="col-2 text-right">
+          <img src={film.hinhAnh} width={200} height={300} />
+
+        </div>
+        <div className="col-8 text-left">
+
+          <Form.Item label="Hệ thống rạp">
+            <Select options={convertSelecHRP()} onChange={handleChangeHeThongRap} placeholder='Chọn hệ thống rạp' />
+          </Form.Item>
+
+          <Form.Item label="Cụm rạp">
+            <Select options={state.cumRapChieu?.map(cumRap => ({
+              label: cumRap.tenCumRap, value: cumRap.maCumRap
+            }))}
+              onChange={handleChangeCumRap} placeholder='Chọn cụm rạp' />
+          </Form.Item>
+
+          <Form.Item label="Ngày giờ chiếu">
+            <DatePicker format='DD/mm/yyyy HH:mm:ss' showTime onChange={onChangeDate} onOk={onOk} />
+          </Form.Item>
+
+          <Form.Item label="Giá vé">
+            <InputNumber onChange={onChangeInputNumber} />
+          </Form.Item>
+
+          <Form.Item label="Chức năng">
+            <Button type="primary" htmlType="submit">Tạo Lịch chiếu</Button>
+          </Form.Item>
+        </div>
+      </div>
+
+
+    </Form>
   )
 }

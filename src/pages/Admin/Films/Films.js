@@ -1,12 +1,10 @@
-import React, { Fragment, useEffect } from 'react'
-import { Table, Button } from 'antd';
-
-import { Input, Space } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import { SearchOutlined } from '@ant-design/icons';
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Table, Button, Input } from 'antd';
+
+import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from '@ant-design/icons';
 import { layDanhSachPhimAction } from '../../../redux/actions/QuanLyPhimAction';
-import {  xoaPhimAction } from '../../../redux/actions/QuanLyPhimAction';
+import { xoaPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../App';
 
@@ -19,6 +17,8 @@ export default function Films() {
 
   const dispatch = useDispatch()
 
+
+
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
   }, [])
@@ -27,9 +27,9 @@ export default function Films() {
     {
       title: 'Mã Phim',
       dataIndex: 'maPhim',
-      value: (text ,object) => {return <span>{text}</span>},
+      value: (text, object) => { return <span>{text}</span> },
       sorter: (a, b) => a.maPhim - b.maPhim,
-      sortDirections: ['descend','ascend'],
+      sortDirections: ['descend', 'ascend'],
       width: "10%"
     },
     {
@@ -70,18 +70,23 @@ export default function Films() {
       dataIndex: 'maPhim',
 
       render: (text, film) => {
-        return <Fragment style={{ textAlign: 'center' }}>
-            <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} ><EditOutlined /></NavLink>
-            <span key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={()=>{
-              // goi action xoa
-              if(window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)){
-                // goi action
+        return (
+          <Fragment style={{ textAlign: 'center' }}>
+            <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
+              <EditOutlined />
+            </NavLink>
+            <span key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
+              if (window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)) {
                 dispatch(xoaPhimAction(film.maPhim))
               }
-
-
-            }} ><DeleteOutlined   /></span>
-        </Fragment>
+            }} ><DeleteOutlined />
+            </span>
+            <NavLink className='ml-3' key={1} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
+              localStorage.setItem('filmParams',JSON.stringify(film))
+            }}>
+              <CalendarOutlined style={{ color: 'green' }} />
+            </NavLink>
+          </Fragment>)
       },
       width: "15%"
     },
@@ -93,8 +98,7 @@ export default function Films() {
 
 
   const onSearch = (value) => {
-    
-
+    dispatch(layDanhSachPhimAction(value))
 
   };
 
@@ -105,7 +109,7 @@ export default function Films() {
   return (
     <div>
       <h2>Quản Lý Phim</h2>
-      <Button className='mb-3'onClick={()=>{
+      <Button className='mb-3' onClick={() => {
         history.push('/admin/films/addnew')
       }} >Thêm Phim</Button>
       <Search

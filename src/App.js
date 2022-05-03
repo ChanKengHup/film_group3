@@ -18,11 +18,6 @@ import Edit from './pages/Admin/Films/Edit';
 
 
 
-
-
-
-
-
 export const history = createBrowserHistory();
 
 function App() {
@@ -37,11 +32,8 @@ function App() {
           <AdminTemplate path='/admin/films' component={Films} /> 
           <AdminTemplate path='/admin/films/addnew' component={AddNew} /> 
           <AdminTemplate path='/admin/films/edit/:id' component={Edit} /> 
-          <AdminTemplate path='/admin/showtimes' component={ShowTime} /> 
+          <AdminTemplate path='/admin/films/showtime/:id/:tenphim' component={ShowTime} /> 
 
-
-          
-        
       </div>
     </Router>
   );

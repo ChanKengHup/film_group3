@@ -9,10 +9,10 @@ import {quanlyPhimService} from '../../services/QuanlyPhimService.js'
 //call API
 
 
-export const layDanhSachPhimAction =()=>{
+export const layDanhSachPhimAction =(tenPhim='')=>{
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.layDanhSachPhim();
+            let result = await quanlyPhimService.layDanhSachPhim(tenPhim);
             dispatch({
                 type:LAY_DS_PHIM,
                 mangPhim: result.data.content
