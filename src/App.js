@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -13,7 +15,9 @@ function App() {
         <Switch>
         <HomeTemplate path='/' component={Home} />
           
+          
         </Switch>
+        
       </div>
     </BrowserRouter>
   );

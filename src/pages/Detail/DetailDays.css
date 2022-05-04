@@ -1,0 +1,13 @@
+.detailDays {
+
+}
+.detailDays__left {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #333;
+}
+.detailDays__left  p {
+    margin-bottom: 0;
+    padding-left: 10px;
+    font-weight: 600;
+}
