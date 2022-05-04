@@ -6,8 +6,9 @@ import { LAY_THONGTIN_PHIM,LAY_DS_PHIM } from "./types/PhimType";
 import { history } from "../../App";
 import { QuanLyPhimReducer } from "../reducers/QuanLyPhimReducer";
 //call API
-import { quanLyPhimService } from "../../services/QuanLyPhimService"
+
 import { SET_DS_PHIM } from "../type/quanLyPhimType";
+import { quanLyPhimService } from "../../services/QuanLyPhimService";
 
 
 
