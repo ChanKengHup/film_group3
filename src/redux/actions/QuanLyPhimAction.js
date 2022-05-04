@@ -5,14 +5,16 @@ import { TOKEN_MOVIE } from "../../util/setting";
 import { LAY_THONGTIN_PHIM,LAY_DS_PHIM } from "./types/PhimType";
 import { history } from "../../App";
 import { QuanLyPhimReducer } from "../reducers/QuanLyPhimReducer";
-import {quanlyPhimService} from '../../services/QuanlyPhimService.js'
 //call API
+import { quanLyPhimService } from "../../services/QuanLyPhimService"
+import { SET_DS_PHIM } from "../type/quanLyPhimType";
+
 
 
 export const layDanhSachPhimAction =(tenPhim='')=>{
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.layDanhSachPhim(tenPhim);
+            let result = await quanLyPhimService.layDanhSachPhim(tenPhim);
             dispatch({
                 type:LAY_DS_PHIM,
                 mangPhim: result.data.content
@@ -27,7 +29,7 @@ export const layDanhSachPhimAction =(tenPhim='')=>{
 export const themPhimUploadHinh = (formData) =>{
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.themPhimUploadHinh(formData);
+            let result = await quanLyPhimService.themPhimUploadHinh(formData);
             alert('Thêm Phim thành công')
             history.push('/admin/films')
         }catch(err){
@@ -39,7 +41,7 @@ export const themPhimUploadHinh = (formData) =>{
 export const layThongTinPhimAction = (maPhim) => {
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.layThongTinPhim(maPhim);
+            let result = await quanLyPhimService.layThongTinPhim(maPhim);
             dispatch({
                 type:LAY_THONGTIN_PHIM,
                 thongTinPhim: result.data.content
@@ -53,7 +55,7 @@ export const layThongTinPhimAction = (maPhim) => {
 export const capNhatPhimUploadAction = (formData) =>{
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.capNhatPhimUpload(formData);
+            let result = await quanLyPhimService.capNhatPhimUpload(formData);
             alert('Cập nhật thành công')
             history.push('/admin/films')
             dispatch(layDanhSachPhimAction())   
@@ -66,7 +68,7 @@ export const capNhatPhimUploadAction = (formData) =>{
 export const xoaPhimAction = (maPhim) => {
     return async (dispatch)=>{
         try {
-            let result = await quanlyPhimService.xoaPhim(maPhim);
+            let result = await quanLyPhimService.xoaPhim(maPhim);
             alert('Xoá Phim thành công')
             dispatch(layDanhSachPhimAction())  
         }catch(err){
@@ -74,4 +76,23 @@ export const xoaPhimAction = (maPhim) => {
         }
     }
 
+}
+
+
+
+export const layDanhSachReducer = () => {
+
+
+    return async (dispatch) => {
+        try {
+            const result = await quanLyPhimService.layDanhSachPhim();
+            dispatch({
+                type:SET_DS_PHIM,
+                arrPhim: result.data.content
+            })
+        }
+        catch (error) {
+            console.log("error", error);
+        }
+    }
 }

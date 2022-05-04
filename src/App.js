@@ -20,6 +20,8 @@ import Edit from './pages/Admin/Films/Edit';
 
 export const history = createBrowserHistory();
 
+
+
 function App() {
   return (
     <Router history={history}>
