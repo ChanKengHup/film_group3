@@ -1,27 +1,27 @@
 import { http } from "../util/setting";
 import { GROUP_ID } from "./TypeService";
-
+// gfdsgdsfgs
 class QuanLyPhimService {
-  layDanhSachPhim = (tenPhim)=>{ 
-    if(tenPhim.trim() !=''){
+  layDanhSachPhim = (tenPhim) => {
+    if (tenPhim.trim() != '') {
       return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`)
     }
     return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
   };
 
-  themPhimUploadHinh = (formData)=>{ 
-    return http.post(`/api/QuanLyPhim/ThemPhimUploadHinh`,formData)
+  themPhimUploadHinh = (formData) => {
+    return http.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData)
   }
-  
-  layThongTinPhim = (maPhim)=>{ 
+
+  layThongTinPhim = (maPhim) => {
     return http.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
   };
 
-  capNhatPhimUpload = (formData)=>{ 
-    return http.post(`/api/QuanLyPhim/CapNhatPhimUpload`,formData)
+  capNhatPhimUpload = (formData) => {
+    return http.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData)
   };
-  
-  xoaPhim = (maPhim)=>{ return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)};
+
+  xoaPhim = (maPhim) => { return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`) };
 
 }
 
