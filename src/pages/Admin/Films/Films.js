@@ -72,16 +72,16 @@ export default function Films() {
       render: (text, film) => {
         return (
           <Fragment style={{ textAlign: 'center' }}>
-            <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
+            <NavLink  style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
               <EditOutlined />
             </NavLink>
-            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
+            <DeleteOutlined   className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
               if (window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)) {
                 dispatch(xoaPhimAction(film.maPhim))
               }
             }}/>
             
-            <NavLink className='ml-3' key={1} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
+            <NavLink className='ml-3'  style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
               localStorage.setItem('filmParams',JSON.stringify(film))
             }}>
               <CalendarOutlined style={{ color: 'green' }} />

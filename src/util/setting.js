@@ -10,7 +10,6 @@ let accessToken = '';
 if (localStorage.getItem('TOKEN_MOVIE')) {
   accessToken = localStorage.getItem('TOKEN_MOVIE');
 }
-console.log(accessToken);
 
 
 export const http = axios.create({
