@@ -1,7 +1,6 @@
 import { http } from "../util/setting";
 import { GROUP_ID } from "./TypeService";
 
-
 class QuanLyPhimService {
   layDanhSachPhim = (tenPhim) => {
     if (tenPhim) {
