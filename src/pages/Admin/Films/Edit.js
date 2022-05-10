@@ -44,19 +44,20 @@ const Edit = (props) => {
       hot: thongTinPhim.hot,
       danhGia: thongTinPhim.danhGia,
       hinhAnh: null,
-      maNhom: 'GP03'
+      maNhom: thongTinPhim.maNhom
     },
     validationSchema: Yup.object({
       tenPhim: Yup.string().trim('Tên phim không được để trống').required('Tên phim không được để trống').notOneOf(tenPhim, 'Tên phim bị trùng trong mã nhóm GP03'),
       trailer: Yup.string().trim('Trailer không được để trống').required('Trailer không được để trống'),
       moTa: Yup.string().trim('Mô tả không được để trống').required('Mô tả không được để trống'),
       danhGia: Yup.string().required('Số sao không được để trống'),
-      ngayKhoiChieu: Yup.date().required('Ngày khởi chiếu không được để trống'),
+      ngayKhoiChieu: Yup.string().required('Ngày khởi chiếu không được để trống'),
 
     }),
 
     onSubmit: values => {
       values.maNhom = GROUP_ID
+      console.log(values);
       let formData = new FormData();
       for (let key in values) {
         if (key !== 'hinhAnh') {
@@ -172,5 +173,6 @@ const Edit = (props) => {
 };
 
 export default Edit
+
 
 

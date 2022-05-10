@@ -43,7 +43,7 @@ const AddNew = () => {
       trailer: Yup.string().trim('Trailer không được để trống').required('Trailer không được để trống'),
       moTa: Yup.string().trim('Mô tả không được để trống').required('Mô tả không được để trống'),
       danhGia: Yup.string().required('Số sao không được để trống'),
-      ngayKhoiChieu: Yup.date().required('Ngày khởi chiếu không được để trống'),
+      ngayKhoiChieu: Yup.string().required('Ngày khởi chiếu không được để trống'),
     }),
     onSubmit: values => {
       values.maNhom = GROUP_ID
