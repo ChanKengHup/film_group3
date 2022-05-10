@@ -1,5 +1,4 @@
 import { http } from "../util/setting";
-import { GROUP_ID } from "./TypeService";
 
 class QuanLyDatVeService {
   

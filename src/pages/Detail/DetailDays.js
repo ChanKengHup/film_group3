@@ -22,7 +22,7 @@ export default function DetailDays(props) {
   };
 
   const { tabPosition } = state;
-  console.log(props);
+  
   return (    
     <>
   

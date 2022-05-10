@@ -1,9 +1,10 @@
 import { http } from "../util/setting";
 import { GROUP_ID } from "./TypeService";
-// gfdsgdsfgs
+
+
 class QuanLyPhimService {
   layDanhSachPhim = (tenPhim) => {
-    if (tenPhim.trim() != '') {
+    if (tenPhim) {
       return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`)
     }
     return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)

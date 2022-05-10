@@ -17,8 +17,6 @@ export default function Films() {
 
   const dispatch = useDispatch()
 
-
-
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
   }, [])
@@ -75,12 +73,17 @@ export default function Films() {
             <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
               <EditOutlined />
             </NavLink>
-            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }} onClick={() => {
+            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }} 
+            
+            
+            onClick={() => {
               if (window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)) {
                 dispatch(xoaPhimAction(film.maPhim))
               }
             }}/>
             
+
+
             <NavLink className='ml-3' key={1} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
               localStorage.setItem('filmParams',JSON.stringify(film))
             }}>

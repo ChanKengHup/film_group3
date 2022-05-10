@@ -4,38 +4,31 @@ import {
   Input,
   Button,
   Radio,
-  Select,
-  Cascader,
   DatePicker,
   InputNumber,
-  TreeSelect,
   Switch,
 } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment'
-import FormList from 'antd/lib/form/FormList';
 import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinPhimAction, capNhatPhimUploadAction } from '../../../redux/actions/QuanLyPhimAction';
 import { GROUP_ID } from '../../../services/TypeService';
 import { useEffect } from 'react';
-import { QuanLyPhimReducer } from '../../../redux/reducers/QuanLyPhimReducer';
 
 const Edit = (props) => {
 
   const [componentSize, setComponentSize] = useState('default');
-
-  //lay thong tin phim tuqf reducer
   const { thongTinPhim } = useSelector(state => state.QuanLyPhimReducer);
+  const { mangPhim } = useSelector(state => state.QuanLyPhimReducer);
+
+  const tenPhim = mangPhim.map(value => {return value.tenPhim}).filter(item => item !== thongTinPhim.tenPhim)
 
   const [img, setImg] = useState('')
-  const dispatch = useDispatch();
-  console.log(thongTinPhim);
-  //lay id (maPhim)
+  const dispatch = useDispatch();  
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(layThongTinPhimAction(id));
-
   }, [])
 
   const formik = useFormik({
@@ -53,11 +46,17 @@ const Edit = (props) => {
       hinhAnh: null,
       maNhom: 'GP03'
     },
+    validationSchema: Yup.object({
+      tenPhim: Yup.string().trim('Tên phim không được để trống').required('Tên phim không được để trống').notOneOf(tenPhim, 'Tên phim bị trùng trong mã nhóm GP03'),
+      trailer: Yup.string().trim('Trailer không được để trống').required('Trailer không được để trống'),
+      moTa: Yup.string().trim('Mô tả không được để trống').required('Mô tả không được để trống'),
+      danhGia: Yup.string().required('Số sao không được để trống'),
+      ngayKhoiChieu: Yup.date().required('Ngày khởi chiếu không được để trống'),
+
+    }),
 
     onSubmit: values => {
-      console.log('values', values);
       values.maNhom = GROUP_ID
-      //tạo đối tượng từ form data => đưa  giá trị values từ formik vào formdata 
       let formData = new FormData();
       for (let key in values) {
         if (key !== 'hinhAnh') {
@@ -73,7 +72,6 @@ const Edit = (props) => {
   })
 
   const handeChangDatePicker = (value) => {
-
     let ngayKhoiChieu = moment(value)
     formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
 
@@ -84,7 +82,6 @@ const Edit = (props) => {
     }
   }
 
-  //thêm hình ảnh, hiển thị trực tiếp
   const handelChangeFile = async (e) => {
     let file = e.target.files[0];
 
@@ -95,7 +92,6 @@ const Edit = (props) => {
       reader.onload = (e) => {
         setImg(e.target.result)
       }
-      //Đem dữ liệu file lưu vào formik
      await formik.setFieldValue('hinhAnh', file)
     }
   }
@@ -107,7 +103,6 @@ const Edit = (props) => {
   return (
 
     <Form
-      // onSubmit={formik.handleSubmit}
       onSubmitCapture={formik.handleSubmit}
       labelCol={{
         span: 4,
@@ -132,15 +127,24 @@ const Edit = (props) => {
       </Form.Item>
       <Form.Item label="Tên Phim">
         <Input name='tenPhim' onChange={formik.handleChange} value={formik.values.tenPhim} />
+        {formik.touched.tenPhim && formik.errors.tenPhim 
+        ? (<div className='alert alert-danger'>{formik.errors.tenPhim}</div>) 
+        : null}
       </Form.Item>
       <Form.Item label="Trailer">
         <Input name='trailer' onChange={formik.handleChange} value={formik.values.trailer} />
+        {formik.touched.tenPhim && formik.errors.trailer ? (
+          <div className='alert alert-danger'>{formik.errors.trailer}</div>
+        ) : null}
       </Form.Item>
       <Form.Item label="Mô Tả" >
         <Input name='moTa' onChange={formik.handleChange} value={formik.values.moTa} />
+        {formik.touched.moTa && formik.errors.moTa ? (
+          <div className='alert alert-danger'>{formik.errors.moTa}</div>
+        ) : null}
       </Form.Item>
       <Form.Item label="Ngày khởi chiếu">
-        <DatePicker format={'DD/MM/YYYY'} onChange={handeChangDatePicker} value={moment(formik.values.ngayKhoiChieu)} />
+        <DatePicker style={{ width: '50%' }} format={'DD/MM/YYYY'} onChange={handeChangDatePicker} value={moment(formik.values.ngayKhoiChieu)} />
       </Form.Item>
       <Form.Item label="Đang chiếu">
         <Switch onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />
@@ -153,7 +157,7 @@ const Edit = (props) => {
       </Form.Item>
 
       <Form.Item label="Số sao">
-        <InputNumber onChange={handleChangeSwitch('danhGia')} min={1} max={10} value={formik.values.danhGia} />
+        <InputNumber placeholder='Cập nhập sao từ 1-10' style={{ width: '50%' }} onChange={handleChangeSwitch('danhGia')} min={1} max={10} value={formik.values.danhGia} maxLength={2}/>
       </Form.Item>
       <Form.Item label="Hình Ảnh">
         <input type='file' onChange={handelChangeFile} accept='image/png, image/jpeg, image/png ,image/gif' />
@@ -161,7 +165,7 @@ const Edit = (props) => {
         <img alt="" width={150} height={200} src={img === '' ? thongTinPhim.hinhAnh : img} />
       </Form.Item>
       <Form.Item label="Tác Vụ">
-        <button type='submit' className='btn btn-success'>Cập Nhật</button>
+        <Button htmlType='submit' type='primary'>Cập Nhật</Button>
       </Form.Item>
     </Form>
   );

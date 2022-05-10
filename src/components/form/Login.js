@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { GROUP_ID } from '../../util/setting';
 import { LoginAction } from '../../action/LoginAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { history } from '../../App';
+
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -30,8 +32,15 @@ export default function Login() {
                 type: 'CLOSE_MODAL',
                 isVisible: false,
             })
+        };
+        if(userLogin.maLoaiNguoiDung === 'QuanTri'){
+            alert('Bạn là thành viên của Quản trị viên, trình duyệt sẽ chuyển sang trang quản trị')
+            history.push('/admin')
         }
+
     }, [userLogin])
+    
+
 
     return (
        

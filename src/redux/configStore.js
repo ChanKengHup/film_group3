@@ -6,6 +6,8 @@ import { LogReducer } from './reducers/LogReducer';
 import { RegisterReducer } from './reducers/RegisterReducer';
 import { QuanLyPhimReducer } from './reducers/QuanLyPhimReducer'
 import { QuanLyRapReducer } from './reducers/QuanLyRapReducer'
+import { QuanLyNguoiDungReducer } from './reducers/QuanLyNguoiDungReducer';
+
 
 const rootReducer = combineReducers({
  
@@ -17,7 +19,8 @@ const rootReducer = combineReducers({
     LogReducer,
     RegisterReducer,
     QuanLyPhimReducer,
-    QuanLyRapReducer
+    QuanLyRapReducer,
+    QuanLyNguoiDungReducer,
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
