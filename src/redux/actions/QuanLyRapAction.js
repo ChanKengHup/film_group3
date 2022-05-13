@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { quanLyRapService } from "../../services/QuanLyRapService";
 import { SET_DS_RAP } from "../type/quanLyRapType";
 
@@ -5,7 +6,6 @@ import { SET_DS_RAP } from "../type/quanLyRapType";
 export const layDSHeThongRapAction = () => {
     return async dispath => {
         try {
-
             const result = await quanLyRapService.layDanhSachRap()
 
             if(result.status === 200) {
@@ -14,7 +14,6 @@ export const layDSHeThongRapAction = () => {
                     heThongRapChieu: result.data.content
                 })
             }
-
         }
         catch(error) {
             console.log('error', error.respone?.data);

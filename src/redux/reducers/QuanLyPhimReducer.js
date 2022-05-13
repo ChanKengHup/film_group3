@@ -16,13 +16,14 @@ const stateDefaut = {
 
 export const QuanLyPhimReducer = (state = stateDefaut, action) => {
   switch (action.type) {
+
     case LAY_DS_PHIM:
       state.mangPhim = action.mangPhim;
       return { ...state }
+
     case LAY_THONGTIN_PHIM:
       state.thongTinPhim = action.thongTinPhim;
       return { ...state }
-
 
       case SET_DS_PHIM: {
         state.arrPhim = action.arrPhim
@@ -41,7 +42,6 @@ export const QuanLyPhimReducer = (state = stateDefaut, action) => {
         state.arrPhim =  state.arrPhimDefault.filter((item) => {
            return item.dangChieu === true
         })
-      
         return {...state}
       }
     default:

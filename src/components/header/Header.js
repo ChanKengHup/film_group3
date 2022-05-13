@@ -46,7 +46,7 @@ export default function Header() {
         <div className="sign-in-up d-flex">
           {!!userLogin.taiKhoan ?
             <LogOut />
-            :
+            : 
             <>
               <Button onClick={showLogin}>
                 Log in

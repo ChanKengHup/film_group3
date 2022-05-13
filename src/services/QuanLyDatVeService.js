@@ -1,6 +1,5 @@
 import { http } from "../util/setting";
 import ThongTinDatVe from "../_core/models/ThongTinDatVe";
-import { GROUP_ID } from "./TypeService";
 
 class QuanLyDatVeService {
 

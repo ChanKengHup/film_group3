@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import axios from 'axios'
 import { DOMAIN } from '../util/config'
 import { TOKEN_MOVIE } from '../util/setting'
@@ -21,6 +22,7 @@ export const RegisterAction = (UserInfo) => {
                     userInfo: result.data.content,
                 })
             }
+            message.success('Đăng kí thành công')
         }
 
         catch (errors) {
