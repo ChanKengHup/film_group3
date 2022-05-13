@@ -1,12 +1,12 @@
 import { Button, Modal } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import "../../assets/style/reset.scss";
 import { useSelector, useDispatch } from 'react-redux';
 import Register from '../form/Register';
 import Login from '../form/Login';
-import { UserOutlined } from '@ant-design/icons';
 import LogOut from '../logout/LogOut';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   const dispatch = useDispatch()
@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <HeaderStyled>
       <div className="header d-flex">
-        <h1 className="brand fw-700">movieCyber</h1>
+        <NavLink to="/" className="brand fw-700">movieCyber</NavLink>
         <div className="sign-in-up d-flex">
           {!!userLogin.taiKhoan ?
             <LogOut />
@@ -87,6 +87,7 @@ const HeaderStyled = styled.div`
       text-transform: uppercase;
       font-size: 32px;
       color: #fff;
+      margin: 0;
     }
   }
 
@@ -95,6 +96,7 @@ const HeaderStyled = styled.div`
 
     .ant-btn {
       font-size: 16px;
+      background-color: #fff;
     }
   }
 

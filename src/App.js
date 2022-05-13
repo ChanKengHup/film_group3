@@ -11,6 +11,9 @@ import Films from './pages/Admin/Films/Films';
 import ShowTime from './pages/Admin/ShowTime/ShowTime';
 import AddNew from './pages/Admin/Films/AddNew';
 import Edit from './pages/Admin/Films/Edit';
+import { CheckoutTemlate } from './templates/CheckoutTemplate/CheckoutTemplate';
+import Checkout from './pages/Checkout/Checkout';
+
 import AddUser from './pages/Admin/Dashboard/AddUser';
 import EditUser from './pages/Admin/Dashboard/EditUser';
 
@@ -25,6 +28,7 @@ function App() {
       {/* <Loading /> */}
       <div className="App">
         <HomeTemplate path='/' component={Home} />
+        <CheckoutTemlate path='/checkout/:id' component={Checkout} />
         <AdminTemplate path='/admin' component={Dashboard} />
         <AdminTemplate path='/admin/adduser' component={AddUser} />
         <AdminTemplate path='/admin/edituser/:taiKhoan' component={EditUser} />

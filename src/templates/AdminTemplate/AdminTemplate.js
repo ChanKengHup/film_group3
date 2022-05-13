@@ -41,11 +41,11 @@ export const AdminTemplate = (props) => {
                         <img className="p-3" src="http://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="" />
                     </NavLink>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} >
-                        <Menu.SubMenu key="1" icon={<UserOutlined />}title='Users'>
-                        <Menu.Item key="21" icon={<UserOutlined />}>
-                            <NavLink to='/admin'>Users</NavLink>
-                        </Menu.Item>
-                        <Menu.Item key="20" icon={<FileOutlined />}>
+                        <Menu.SubMenu key="1" icon={<UserOutlined />} title='Users'>
+                            <Menu.Item key="21" icon={<UserOutlined />}>
+                                <NavLink to='/admin'>Users</NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="20" icon={<FileOutlined />}>
                                 <NavLink to='/admin/adduser'>Add user</NavLink>
                             </Menu.Item>
                         </Menu.SubMenu>
@@ -67,14 +67,14 @@ export const AdminTemplate = (props) => {
 
                         <div className="d-flex justify-content-between align-items-center">
                             <h6 className="hello__tk pr-5">Hello! {userLogin.taiKhoan}</h6>
-                        <Button className="mr-4 btn__dangXuat" onClick={() => {
-                            localStorage.removeItem("LOGIN_USER");
-                            localStorage.removeItem("TOKEN_MOVIE");
-                            history.push('/')
-                            window.location.reload()
-                        }
-                            
-                        }>Đăng Xuất</Button>
+                            <Button className="mr-4 btn__dangXuat" onClick={() => {
+                                localStorage.removeItem("LOGIN_USER");
+                                localStorage.removeItem("TOKEN_MOVIE");
+                                history.push('/')
+                                window.location.reload()
+                            }
+
+                            }>Đăng Xuất</Button>
                         </div>
                     </Header>
 
