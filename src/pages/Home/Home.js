@@ -8,23 +8,20 @@ import { layDSHeThongRapAction } from '../../redux/actions/QuanLyRapAction'
 
 export default function Home() {
 
-  const {heThongRapChieu} = useSelector(state => state.QuanLyRapReducer)
+  const { heThongRapChieu } = useSelector(state => state.QuanLyRapReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const action  = layDSHeThongRapAction()
+    const action = layDSHeThongRapAction()
     dispatch(action)
   }, [])
 
   return (
     <Fragment>
-     
-
-    <div className='container p-5 m-5'>
-      <FilmDetail/>
-      <DetailDays heThongRapChieu= {heThongRapChieu}/>
-    </div>
-
+      <div className='container p-5 m-5'>
+        <FilmDetail />
+        <DetailDays heThongRapChieu={heThongRapChieu} />
+      </div>
     </Fragment>
   )
 }

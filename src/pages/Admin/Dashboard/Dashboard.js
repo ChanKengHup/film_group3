@@ -84,7 +84,7 @@ export default function Dashboard(props) {
 
       render: (text, ND) => {
         return (
-          <Fragment key={`${mangND.taiKhoan}`}  style={{ textAlign: 'center' }}>
+          <Fragment key={`${mangND.taiKhoan}`} >
             <NavLink style={{ fontSize: 20 }} to={`/admin/edituser/${ND.taiKhoan}`} >
               <EditOutlined />
             </NavLink>

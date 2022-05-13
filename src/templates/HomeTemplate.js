@@ -8,7 +8,6 @@ import { HomeCarousel } from "../components/HomeCarousel/HomeCarousel"
 export const HomeTemplate = (props) => {
   return <Route exact path={props.path} render={(propsRoute) => {
     return <Fragment>
-
       <Header />
       <HomeCarousel />
 

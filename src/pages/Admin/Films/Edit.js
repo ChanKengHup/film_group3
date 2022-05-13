@@ -21,9 +21,8 @@ const Edit = (props) => {
   const [componentSize, setComponentSize] = useState('default');
   const { thongTinPhim } = useSelector(state => state.QuanLyPhimReducer);
   const { mangPhim } = useSelector(state => state.QuanLyPhimReducer);
-
   const tenPhim = mangPhim.map(value => {return value.tenPhim}).filter(item => item !== thongTinPhim.tenPhim)
-
+  console.log(props);
   const [img, setImg] = useState('')
   const dispatch = useDispatch();  
   useEffect(() => {

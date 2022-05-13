@@ -1,26 +1,20 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button, Input } from 'antd';
-
 import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from '@ant-design/icons';
 import { layDanhSachPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { xoaPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../App';
 
-
 const { Search } = Input;
 
 export default function Films() {
-
   const { mangPhim } = useSelector(state => state.QuanLyPhimReducer);
-
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
   }, [])
-
   const columns = [
     {
       title: 'Mã Phim',
@@ -69,22 +63,17 @@ export default function Films() {
 
       render: (text, film) => {
         return (
-          <Fragment style={{ textAlign: 'center' }}>
+          <Fragment >
             <NavLink key={1} style={{ fontSize: 20 }} to={`/admin/films/edit/${film.maPhim}`} >
               <EditOutlined />
             </NavLink>
-            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }} 
-            
-            
+            <DeleteOutlined  key={2} className='text-danger ml-3' style={{ fontSize: 20, }}            
             onClick={() => {
               if (window.confirm('Bạn có chắc muốn xoá phim' + film.tenPhim)) {
                 dispatch(xoaPhimAction(film.maPhim))
               }
             }}/>
-            
-
-
-            <NavLink className='ml-3' key={1} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
+            <NavLink className='ml-3' key={3} style={{ fontSize: 20 }} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}  onClick={()=>{
               localStorage.setItem('filmParams',JSON.stringify(film))
             }}>
               <CalendarOutlined style={{ color: 'green' }} />
@@ -93,22 +82,15 @@ export default function Films() {
       },
       width: "15%"
     },
-
   ];
 
   const data = mangPhim
-
-
-
   const onSearch = (value) => {
     dispatch(layDanhSachPhimAction(value))
-
   };
-
   function onChange(pagination, filters, sorter, extra) {
     console.log('params', pagination, filters, sorter, extra);
   }
-
   return (
     <div>
       <h2>Quản Lý Phim</h2>
@@ -120,10 +102,8 @@ export default function Films() {
         placeholder="Search..."
         size="large"
         enterButton={<SearchOutlined />}
-
         onSearch={onSearch}
       />
-
       <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
     </div>
   )

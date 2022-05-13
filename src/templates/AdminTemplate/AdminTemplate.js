@@ -34,7 +34,6 @@ export const AdminTemplate = (props) => {
 
     return <Route exact path={props.path} render={(propsRoute) => {
         return <Fragment>
-
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={state.collapsed}>
                     <NavLink to='/admin' className="logo">
@@ -57,12 +56,10 @@ export const AdminTemplate = (props) => {
                                 <NavLink to='/admin/films/addnew'>Add film</NavLink>
                             </Menu.Item>
                         </Menu.SubMenu>
-
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background header__admin-style" style={{ padding: 0 }}>
-
                         <MenuUnfoldOutlined style={{ color: "white", fontSize: "20px" }} />
 
                         <div className="d-flex justify-content-between align-items-center">
@@ -77,7 +74,6 @@ export const AdminTemplate = (props) => {
                         }>Đăng Xuất</Button>
                         </div>
                     </Header>
-
                     <Content
                         className="site-layout-background"
                         style={{
@@ -86,7 +82,6 @@ export const AdminTemplate = (props) => {
                             minHeight: 280,
                         }}
                     >
-
                         <props.component {...propsRoute} />
 
                     </Content>
