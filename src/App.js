@@ -15,6 +15,8 @@ import ShowTime from './pages/Admin/ShowTime/ShowTime';
 import Users from './pages/Admin/Users/Users';
 import AddNew from './pages/Admin/Films/AddNew';
 import Edit from './pages/Admin/Films/Edit';
+import { CheckoutTemlate } from './templates/CheckoutTemplate/CheckoutTemplate';
+import Checkout from './pages/Checkout/Checkout';
 
 
 
@@ -28,6 +30,7 @@ function App() {
       {/* <Loading /> */}
       <div className="App">
         <HomeTemplate path='/' component={Home} />
+        <CheckoutTemlate path='/checkout/:id' component={Checkout} />
         <AdminTemplate path='/admin' component={Dashboard} />
         <AdminTemplate path='/admin/users' component={Users} />
         <AdminTemplate path='/admin/films' component={Films} />

@@ -57,4 +57,8 @@ const HomeCarouselStyled = styled.div`
             }
         }
     }
+
+    .slick-dots {
+        width: auto;
+    }
 `

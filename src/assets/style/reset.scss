@@ -1,14 +1,25 @@
-
 .container {
-    max-width: 90%;
+    width: 90%;
 }
 
 /* ------------------- margin  ------------------- */
-.mt-20 {
+.m-t-5 {
+    margin-top: 5px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-20 {
     margin-top: 20px;
 }
 
-.mt-40 {
+.m-t-30 {
+    margin-top: 30px;
+}
+
+.m-t-40 {
     margin-top: 40px;
 }
 
@@ -20,20 +31,30 @@
     margin-left: 5px;
 }
 
+.m-y-20 {
+    margin: 20px 0;
+}
 
 /* ------------------- padding  ------------------- */
 .p-10-20 {
     padding: 10px 20px;
 }
 
-.px-10 {
+.p-x-10 {
     padding: 0 10px;
 }
 
-.px-15 {
+.p-x-15 {
     padding: 0 15px;
 }
 
+.p-y-6 {
+    padding: 6px 0;
+}
+
+.p-y-12 {
+    padding: 12px 0;
+}
 
 /* ------------------- text  ------------------- */
 .text-uppercase {
@@ -50,11 +71,17 @@
 }
 
 /* ------------------- height  ------------------- */
-
+.min-height-100vh {
+    min-height: 100vh;
+}
 
 /* ------------------- font-size  ------------------- */
 .fs-16 {
     font-size: 16px;
+}
+
+.fs-18 {
+    font-size: 18px;
 }
 
 .fs-32 {
@@ -81,12 +108,18 @@
 /* ------------------- button  ------------------- */
 .ant-btn {
     border-radius: 5px;
-    min-width    : 100px;
-    height       : auto;
-    border       : none;
+    min-width: 100px;
+    height: auto;
+    border: none;
 }
 
 /* ------------------- flex  ------------------- */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .align-center {
     display: flex;
     align-items: center;
@@ -100,4 +133,14 @@
 .justify-end {
     display: flex;
     justify-content: flex-end;
+}
+
+/* ------------------- radius ------------------- */
+.radius-5 {
+    border-radius: 5px;
+}
+
+/* ------------------- cursor ------------------- */
+.pointer {
+    cursor: pointer;
 }

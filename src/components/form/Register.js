@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterAction } from '../../action/RegisterAction';
+import styled from 'styled-components';
 
 export default function Register() {
     const dispatch = useDispatch();
@@ -74,7 +75,7 @@ export default function Register() {
             </div>
             <div className="form-group">
                 <label>Mã nhóm</label>
-                <input onChange={formik.handleChange} onBlur={formik.handleBlur} type="text" name='maNhom' className="form-control" />
+                <input onChange={formik.handleChange} onBlur={formik.handleBlur} disabled value="GP03" type="text" name='maNhom' className="form-control" />
                 {formik.touched.maNhom && formik.errors.maNhom ? (
                     <div className='alert alert-danger'>{formik.errors.maNhom}</div>
                 ) : null}
@@ -86,7 +87,18 @@ export default function Register() {
                     <div className='alert alert-danger'>{formik.errors.hoTen}</div>
                 ) : null}
             </div>
-            <button type="submit" className="btn btn-primary">Đăng Ký</button>
+            <ButtonStyled type="submit" className="btn btn-primary">Đăng Ký</ButtonStyled>
         </form>
     )
 }
+
+const ButtonStyled = styled.button`
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+    &:hover {
+        color: #fff;
+        background-color: #0069d9;
+    }
+`

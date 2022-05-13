@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </Col>
       </Row>
-      <div className="copy-right mt-20 justify-center fs-16">
+      <div className="copy-right m-t-20 justify-center fs-16">
         Copyright 2017 <p className='fw-700'>&nbsp;MOVIECYBER</p>. All Rights Reserved.
       </div>
     </FooterStyled>

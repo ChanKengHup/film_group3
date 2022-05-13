@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { GROUP_ID } from '../../util/setting';
 import { LoginAction } from '../../action/LoginAction';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function Login() {
     }, [userLogin])
 
     return (
-       
+
         <form onSubmit={(e) => {
             e.preventDefault();
             formik.handleSubmit(e);
@@ -54,7 +55,18 @@ export default function Login() {
                     <div className='alert alert-danger'>{formik.errors.matKhau}</div>
                 ) : null}
             </div>
-            <button type="submit" className="btn btn-primary">Đăng Nhập</button>
+            <ButtonStyled type="submit" className="btn">Đăng Nhập</ButtonStyled>
         </form>
     )
 }
+
+const ButtonStyled = styled.button`
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+    &:hover {
+        color: #fff;
+        background-color: #0069d9;
+    }
+`

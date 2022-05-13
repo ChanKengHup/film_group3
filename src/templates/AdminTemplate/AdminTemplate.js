@@ -20,7 +20,6 @@ export const AdminTemplate = (props) => {
 
     // const {component,...restProps} = props
     // const {userLogin} = useSelector(state = state.QuanLyNguoiDungReducer)
-
     const [state, setState] = useState({
         collapsed: false,
     })
@@ -31,9 +30,9 @@ export const AdminTemplate = (props) => {
         });
     };
 
-    useEffect(() => { 
-        window.scrollTo(0, 0) 
-        
+    useEffect(() => {
+        window.scrollTo(0, 0)
+
     })
 
     // if(!localStorage.getItem(USER_LOGIN)){
@@ -62,7 +61,7 @@ export const AdminTemplate = (props) => {
 
     return <Route exact path={props.path} render={(propsRoute) => {
         return <Fragment>
-          
+
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={state.collapsed}>
                     <div className="logo p-4">
@@ -80,12 +79,12 @@ export const AdminTemplate = (props) => {
                                 <NavLink to='/admin/films/addnew'>Addnews</NavLink>
                             </Menu.Item>
                         </Menu.SubMenu>
-                        
+
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
-                       
+
                         {state.collapsed ? <MenuUnfoldOutlined style={{ color: "white", fontSize: "20px" }} onClick={toggle} /> : <MenuFoldOutlined style={{ color: "white", fontSize: "20px" }} onClick={toggle} />}
                     </Header>
 

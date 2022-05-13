@@ -2,24 +2,17 @@ import React, { useState } from 'react';
 import {
   Form,
   Input,
-  Button,
   Radio,
-  Select,
-  Cascader,
   DatePicker,
   InputNumber,
-  TreeSelect,
   Switch,
 } from 'antd';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import moment from 'moment'
-import FormList from 'antd/lib/form/FormList';
 import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinPhimAction, capNhatPhimUploadAction } from '../../../redux/actions/QuanLyPhimAction';
 import { GROUP_ID } from '../../../services/TypeService';
 import { useEffect } from 'react';
-import { QuanLyPhimReducer } from '../../../redux/reducers/QuanLyPhimReducer';
 
 const Edit = (props) => {
 
@@ -30,7 +23,7 @@ const Edit = (props) => {
 
   const [img, setImg] = useState('')
   const dispatch = useDispatch();
-  console.log(thongTinPhim);
+  console.log(props);
   //lay id (maPhim)
   useEffect(() => {
     let { id } = props.match.params;
@@ -96,7 +89,7 @@ const Edit = (props) => {
         setImg(e.target.result)
       }
       //Đem dữ liệu file lưu vào formik
-     await formik.setFieldValue('hinhAnh', file)
+      await formik.setFieldValue('hinhAnh', file)
     }
   }
 
