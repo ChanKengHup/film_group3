@@ -1,9 +1,8 @@
 import './DetailDays.css'
-import React, { Fragment, useEffect, useState } from 'react'
-import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Fragment, useState } from 'react'
+import { useSelector } from 'react-redux';
 
-import { Tabs, Radio, Space } from 'antd';
+import { Tabs } from 'antd';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
@@ -15,11 +14,6 @@ export default function DetailDays(props) {
     tabPosition: 'left',
   })
 
-  const { QuanLyPhimReducer } = useSelector(state => state.QuanLyPhimReducer)
-
-  const changeTabPosition = e => {
-    setState({ tabPosition: e.target.value });
-  };
 
   const { tabPosition } = state;
 

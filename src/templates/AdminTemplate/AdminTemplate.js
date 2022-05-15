@@ -37,7 +37,7 @@ export const AdminTemplate = (props) => {
 
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={state.collapsed}>
-                    <NavLink to='/admin' className="logo">
+                    <NavLink to='/' className="logo">
                         <img className="p-3" src="http://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="" />
                     </NavLink>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} >

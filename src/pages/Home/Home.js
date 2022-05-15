@@ -19,7 +19,7 @@ export default function Home() {
     <Fragment>
       <HomeCarousel />
 
-      <div className="container p-5 m-5">
+      <div className="container p-5 m-5" style={{ width: "90%" }}>
         <FilmDetail />
         <DetailDays heThongRapChieu={heThongRapChieu} />
       </div>

@@ -46,7 +46,7 @@ export default function Header() {
         <div className="sign-in-up d-flex">
           {!!userLogin.taiKhoan ?
             <LogOut />
-            : 
+            :
             <>
               <Button onClick={showLogin}>
                 Log in
@@ -82,6 +82,7 @@ const HeaderStyled = styled.div`
     width: 90%;
     margin: 25px 5%;
     justify-content: space-between;
+    align-items: center;
 
     .brand {
       text-transform: uppercase;

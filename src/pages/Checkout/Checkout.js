@@ -47,7 +47,6 @@ const Checkout = (props) => {
             </Fragment>
         })
     }
-    console.log(danhSachGheDangDat);
 
     return (
         <CheckoutStyled className="min-height-100vh">

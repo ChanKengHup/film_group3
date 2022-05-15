@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Rate, Tabs } from "antd";
-
 import "../../assets/style/circle.css";
+import "../../assets/style/reset.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { layThongTinChiTietPhim } from "../../redux/actions/QuanLyRapAction";
 import { NavLink } from "react-router-dom";
@@ -23,7 +23,7 @@ const DetailDay = (props) => {
 
   return (
     <div className="">
-      <div className="bg-slate-700 h-max pt-48">
+      <div className="bg-slate-700 h-max p-t-120 p-b-80">
         <div className="grid grid-cols-12">
           <div className="col-span-5 col-start-3">
             <div className="grid grid-cols-3">
