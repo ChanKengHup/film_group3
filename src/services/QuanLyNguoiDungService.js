@@ -24,6 +24,8 @@ class QuanLyNguoiDungService {
 
   xoaND = (taiKhoan) => { return http.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`) };
 
+  layThongTinTaiKhoan = () => { return http.post('/api/QuanLyNguoiDung/ThongTinTaiKhoan')};
+
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();

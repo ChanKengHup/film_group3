@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import {
   Form,
   Input,
-  Button,
   Radio,
   DatePicker,
   InputNumber,
   Switch,
+  Button
 } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -21,10 +21,11 @@ const Edit = (props) => {
   const [componentSize, setComponentSize] = useState('default');
   const { thongTinPhim } = useSelector(state => state.QuanLyPhimReducer);
   const { mangPhim } = useSelector(state => state.QuanLyPhimReducer);
-  const tenPhim = mangPhim.map(value => {return value.tenPhim}).filter(item => item !== thongTinPhim.tenPhim)
-  console.log(props);
+
+  const tenPhim = mangPhim.map(value => { return value.tenPhim }).filter(item => item !== thongTinPhim.tenPhim)
+
   const [img, setImg] = useState('')
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(layThongTinPhimAction(id));
@@ -92,7 +93,7 @@ const Edit = (props) => {
       reader.onload = (e) => {
         setImg(e.target.result)
       }
-     await formik.setFieldValue('hinhAnh', file)
+      await formik.setFieldValue('hinhAnh', file)
     }
   }
 
@@ -127,9 +128,9 @@ const Edit = (props) => {
       </Form.Item>
       <Form.Item label="Tên Phim">
         <Input name='tenPhim' onChange={formik.handleChange} value={formik.values.tenPhim} />
-        {formik.touched.tenPhim && formik.errors.tenPhim 
-        ? (<div className='alert alert-danger'>{formik.errors.tenPhim}</div>) 
-        : null}
+        {formik.touched.tenPhim && formik.errors.tenPhim
+          ? (<div className='alert alert-danger'>{formik.errors.tenPhim}</div>)
+          : null}
       </Form.Item>
       <Form.Item label="Trailer">
         <Input name='trailer' onChange={formik.handleChange} value={formik.values.trailer} />
@@ -157,7 +158,7 @@ const Edit = (props) => {
       </Form.Item>
 
       <Form.Item label="Số sao">
-        <InputNumber placeholder='Cập nhập sao từ 1-10' style={{ width: '50%' }} onChange={handleChangeSwitch('danhGia')} min={1} max={10} value={formik.values.danhGia} maxLength={2}/>
+        <InputNumber placeholder='Cập nhập sao từ 1-10' style={{ width: '50%' }} onChange={handleChangeSwitch('danhGia')} min={1} max={10} value={formik.values.danhGia} maxLength={2} />
       </Form.Item>
       <Form.Item label="Hình Ảnh">
         <input type='file' onChange={handelChangeFile} accept='image/png, image/jpeg, image/png ,image/gif' />

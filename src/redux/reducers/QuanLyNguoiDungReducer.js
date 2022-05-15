@@ -1,11 +1,11 @@
 
-import { LAY_DS_ND, LAY_THONGTIN_ND } from "../actions/types/NguoiDungType";
+import { LAY_DS_ND, LAY_THONGTIN_ND,LAY_THONGTIN_TAIKHOAN } from "../actions/types/NguoiDungType";
 
 const stateDefaut = {
   mangND: [],
   thongTinND: {},
-  mangLoaiND: []
-
+  mangLoaiND: [],
+  thongTinTK: {},
 }
 
 export const QuanLyNguoiDungReducer = (state = stateDefaut, action) => {
@@ -16,12 +16,9 @@ export const QuanLyNguoiDungReducer = (state = stateDefaut, action) => {
       case LAY_THONGTIN_ND:
         state.thongTinND = action.thongTinND;
         return { ...state }
-
-    // case LAY_THONGTIN_ND:
-    //   state.thongTinPhim = action.thongTinPhim;
-    //   return { ...state }
-
-
+        case LAY_THONGTIN_TAIKHOAN:
+          state.thongTinTK = action.thongTinTK;
+          return { ...state }
     default:
       return state
   }

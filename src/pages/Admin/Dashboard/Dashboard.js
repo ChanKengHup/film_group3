@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button, Input } from 'antd';
 import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { history } from '../../../App';
 import { layDanhSachNDAction, xoaNDAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 
@@ -12,14 +12,30 @@ import { layDanhSachNDAction, xoaNDAction } from '../../../redux/actions/QuanLyN
 const { Search } = Input;
 
 export default function Dashboard(props) {
-
+  const { userLogin } = useSelector(state => state.LogReducer)
   const { mangND } = useSelector(state => state.QuanLyNguoiDungReducer);
-
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(layDanhSachNDAction());
   }, [])
+
+  // if (userLogin.maLoaiNguoiDung === 'KhachHang' && userLogin.maNhom !== 'GP03' || !(userLogin.maLoaiNguoiDung)) {
+  //     alert("Bạn không có quyền truy cập vào trang admin! Hãy đăng nhập băng tài khoản Admin thuộc nhóm GP03")
+  //     history.push('/')
+  // }
+  
+  if(!localStorage.getItem("LOGIN_USER")){
+    alert('Bạn không có quyền  truy cập vào trang này!')
+    return <Redirect to='/'/>
+  };
+  
+  if(userLogin.maLoaiNguoiDung !== 'QuanTri'){
+    alert('Bạn không có quyền truy cập vào trang này!')
+    return <Redirect to='/'/>
+  }
+  
+
+
 
   const columns = [
     {
@@ -109,9 +125,9 @@ export default function Dashboard(props) {
   return (
     <div>
       <h2>Quản Lý Người Dùng</h2>
-      <Button className='my-3' type="primary"  onClick={() => {
+      <button className='my-3 btn btn-primary'  onClick={() => {
         history.push('/admin/adduser')
-      }} >Thêm Người Dùng</Button>
+      }} >Thêm Người Dùng</button>
       <Search
         className='mb-4'
         placeholder="Search name..."

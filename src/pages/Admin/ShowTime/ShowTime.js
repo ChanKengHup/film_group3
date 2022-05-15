@@ -103,7 +103,7 @@ export default function ShowTime(props) {
               onChange={handleChangeCumRap} placeholder='Chọn cụm rạp' />
           </Form.Item>
           <Form.Item label="Ngày giờ chiếu">
-            <DatePicker format='DD/mm/yyyy HH:mm:ss' showTime onChange={onChangeDate} onOk={onOk} />
+            <DatePicker format='DD/MM/YYYY HH:mm:ss' showTime onChange={onChangeDate} onOk={onOk} />
           </Form.Item>
           <Form.Item label="Giá vé">
             <InputNumber onChange={onChangeInputNumber} />

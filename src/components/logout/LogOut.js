@@ -3,6 +3,7 @@ import { UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { LogoutAction } from '../../action/LogoutAction';
+import { history } from '../../App';
 
 export default function LogOut() {
     const dispatch = useDispatch()
@@ -11,6 +12,7 @@ export default function LogOut() {
     const handleLogout = () => {
 
         dispatch(LogoutAction())
+        history.push('/')
     }
 
     return (

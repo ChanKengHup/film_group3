@@ -26,7 +26,6 @@ const EditUser = (props) => {
   
   const userMail = mangND.map(value=>{return value.email}).filter(item => item !== thongTinND.email)
 
-  console.log(thongTinND);
   useEffect(() => {
     let { taiKhoan } = props.match.params;
     dispatch(layThongTinNDAction(taiKhoan));
@@ -100,7 +99,6 @@ const EditUser = (props) => {
           {
             required: true,
             message: 'Mật khẩukhông được để trống',
-            // autoComplete:'off'
           },
           {
             whitespace: true,

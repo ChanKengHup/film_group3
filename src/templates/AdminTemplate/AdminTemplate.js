@@ -1,4 +1,4 @@
-import { NavLink, Redirect, Route } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
 import { Fragment, useState, React, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Layout, Menu, Button } from 'antd';
@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import { history } from "../../App";
 import '../../assets/style/admin.css'
+import _ from "lodash";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -24,13 +25,28 @@ export const AdminTemplate = (props) => {
         });
     };
 
-    if (userLogin.maLoaiNguoiDung === 'KhachHang' || !(userLogin.maLoaiNguoiDung)) {
-        // alert("Bạn không có quyền truy cập vào trang admin!")
-        // history.push('/')
-    }
-    if (userLogin.maLoaiNguoiDung === 'QuanTri') {
-        history.push('/admin')
-    }
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    })
+
+    const operations = <Fragment>
+        {!_.isEmpty(userLogin)
+            ? <Fragment>
+                <button onClick={() => {
+                    // history.push('/profile')
+                }} className='text-blue-900'>
+                    <div style={{ width: 40, height: 40, display: 'flex', justifyContent: 'center', alignItems: 'center', }} className='text-2xl ml-5 text-red-800 rounded-full bg-red-200'> {userLogin.taiKhoan.substr(0, 1)}
+                     </div>
+                    </button>
+                <button className='text-white ml-2' onClick={() => {
+                    localStorage.removeItem("LOGIN_USER");
+                    localStorage.removeItem("TOKEN_MOVIE")
+                    history.push('/');
+                    window.location.reload();
+                }}>Đăng Xuất</button>
+            </Fragment>
+            : ''}
+    </Fragment>
 
     return <Route exact path={props.path} render={(propsRoute) => {
         return <Fragment>
@@ -40,11 +56,11 @@ export const AdminTemplate = (props) => {
                         <img className="p-3" src="http://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="" />
                     </NavLink>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} >
-                        <Menu.SubMenu key="1" icon={<UserOutlined />}title='Users'>
-                        <Menu.Item key="21" icon={<UserOutlined />}>
-                            <NavLink to='/admin'>Users</NavLink>
-                        </Menu.Item>
-                        <Menu.Item key="20" icon={<FileOutlined />}>
+                        <Menu.SubMenu key="1" icon={<UserOutlined />} title='Users'>
+                            <Menu.Item key="21" icon={<UserOutlined />}>
+                                <NavLink to='/admin'>Users</NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="20" icon={<FileOutlined />}>
                                 <NavLink to='/admin/adduser'>Add user</NavLink>
                             </Menu.Item>
                         </Menu.SubMenu>
@@ -61,17 +77,9 @@ export const AdminTemplate = (props) => {
                 <Layout className="site-layout">
                     <Header className="site-layout-background header__admin-style" style={{ padding: 0 }}>
                         <MenuUnfoldOutlined style={{ color: "white", fontSize: "20px" }} />
-
-                        <div className="d-flex justify-content-between align-items-center">
-                            <h6 className="hello__tk pr-5">Hello! {userLogin.taiKhoan}</h6>
-                        <Button className="mr-4 btn__dangXuat" onClick={() => {
-                            localStorage.removeItem("LOGIN_USER");
-                            localStorage.removeItem("TOKEN_MOVIE");
-                            history.push('/')
-                            window.location.reload()
-                        }
-                            
-                        }>Đăng Xuất</Button>
+                        
+                        <div style={{height: '90%'}} className="">
+                            {operations}
                         </div>
                     </Header>
                     <Content

@@ -1,14 +1,23 @@
-import { Button, Modal } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Button, Modal, Select } from 'antd';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import "../../assets/style/reset.scss";
 import { useSelector, useDispatch } from 'react-redux';
 import Register from '../form/Register';
 import Login from '../form/Login';
-import { UserOutlined } from '@ant-design/icons';
 import LogOut from '../logout/LogOut';
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+const { Option } = Select;
 
 export default function Header() {
+  const { t, i18n } = useTranslation()
+
+  const handleChange = (value) => {
+    i18n.changeLanguage(value)
+  }
+
   const dispatch = useDispatch()
   const { Component, isVisible } = useSelector(state => state.ModalReducer)
   const { userLogin } = useSelector(state => state.LogReducer)
@@ -42,21 +51,25 @@ export default function Header() {
   return (
     <HeaderStyled>
       <div className="header d-flex">
-        <h1 className="brand fw-700">movieCyber</h1>
+        <NavLink to="/" className="brand fw-700">movieCyber</NavLink>
         <div className="sign-in-up d-flex">
           {!!userLogin.taiKhoan ?
             <LogOut />
-            : 
+            :
             <>
               <Button onClick={showLogin}>
-                Log in
+                {t("Log in")}
               </Button>
               <Button onClick={showRegister}>
-                Register
+                {t("Register")}
               </Button>
             </>
           }
-
+          <Select defaultValue="en" style={{ width: 80 }} onChange={handleChange} className='d-flex align-items-center'>
+            <Option value="en">Eng</Option>
+            <Option value="chi">China</Option>
+            <Option value="vi">Vie</Option>
+          </Select>
 
         </div>
       </div>
@@ -87,6 +100,7 @@ const HeaderStyled = styled.div`
       text-transform: uppercase;
       font-size: 32px;
       color: #fff;
+      margin: 0;
     }
   }
 
@@ -95,6 +109,7 @@ const HeaderStyled = styled.div`
 
     .ant-btn {
       font-size: 16px;
+      background-color: #fff;
     }
   }
 

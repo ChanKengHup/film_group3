@@ -1,8 +1,7 @@
-import axios from "axios";
-import { TOKEN_MOVIE } from "../../util/setting";
+
 import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
-import { LAY_DS_ND, LAY_THONGTIN_ND } from "./types/NguoiDungType";
+import { LAY_DS_ND, LAY_THONGTIN_ND,LAY_THONGTIN_TAIKHOAN } from "./types/NguoiDungType";
 import { message } from "antd";
 
 
@@ -64,6 +63,21 @@ export const CapNhatThongTinNguoiDungAction = (formData) =>{
             message.success('Cập nhật người dùng thành công')
             history.push('/admin')
             dispatch(layDanhSachNDAction())   
+        }catch(err){
+            console.log('err',err);
+        }
+    }
+}
+export const layThongTinTaiKhoanAction = () => {
+    return async (dispatch)=>{
+        try {
+            let result = await quanLyNguoiDungService.layThongTinTaiKhoan();
+            
+                dispatch({
+                    type:LAY_THONGTIN_TAIKHOAN,
+                    thongTinTK: result.data.content
+                })
+            
         }catch(err){
             console.log('err',err);
         }
