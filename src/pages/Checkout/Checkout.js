@@ -293,10 +293,7 @@ export default function (props) {
         return <Redirect to='/'/>
       };
       
-      if(userLogin.maLoaiNguoiDung !== 'QuanTri'){
-        alert('Bạn không có quyền  truy cập vào trang này vui lòng đăng nhập!')
-        return <Redirect to='/'/>
-      }
+     
     useEffect(()=>{
         return ()=>{
             dispatch({

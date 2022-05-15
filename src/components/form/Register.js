@@ -39,8 +39,8 @@ export default function Register() {
                 .notOneOf(userName, 'Tài khoản bị trùng trong mã nhóm GP03'),
             matKhau: Yup.string()
                 .required("Mật khẩu không được để trống")
-                .min(3, "Mật khẩu phải từ 3-12 ký tự")
-                .max(12, 'Mật khẩu phải từ 3-12 ký tự'),
+                .min(6, "Mật khẩu phải từ 6-12 ký tự")
+                .max(12, 'Mật khẩu phải từ 6-12 ký tự'),
             email: Yup.string().
                 required('Email không được để trống')
                 .email('Email không đúng định dạng')
