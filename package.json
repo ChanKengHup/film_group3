@@ -18,10 +18,7 @@
     "i18next-http-backend": "^1.4.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
-<<<<<<< HEAD
-=======
     "node-sass": "^7.0.1",
->>>>>>> 24805cdffd6ad19b204758e2b65a24e007e1ca1d
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -33,10 +30,7 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "sass": "^1.50.1",
-<<<<<<< HEAD
-=======
     "sass-loader": "^12.6.0",
->>>>>>> 24805cdffd6ad19b204758e2b65a24e007e1ca1d
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",

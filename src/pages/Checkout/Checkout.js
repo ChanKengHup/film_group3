@@ -14,7 +14,7 @@ import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import { connection } from '../../index';
 import { history } from '../../App';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 const Checkout = (props) => {
     const dispatch = useDispatch()
@@ -196,6 +196,11 @@ const Checkout = (props) => {
         </CheckoutStyled>
     )
 }
+
+
+
+
+
 const CheckoutStyled = styled.div`
     width: 90%;
     margin: 40px auto;
@@ -278,10 +283,20 @@ function callback(key) {
 
 export default function (props) {
     const { tabActive } = useSelector(state => state.QuanLyDatVeReducer)
+    const { userLogin } = useSelector(state => state.LogReducer)
     const dispatch = useDispatch();
 
-    const { userLogin } = useSelector(state => state.LogReducer);
+   
 
+    if(!localStorage.getItem("LOGIN_USER")){
+        alert('Bạn không có quyền  truy cập vào trang này vui lòng đăng nhập!')
+        return <Redirect to='/'/>
+      };
+      
+      if(userLogin.maLoaiNguoiDung !== 'QuanTri'){
+        alert('Bạn không có quyền  truy cập vào trang này vui lòng đăng nhập!')
+        return <Redirect to='/'/>
+      }
     useEffect(()=>{
         return ()=>{
             dispatch({
