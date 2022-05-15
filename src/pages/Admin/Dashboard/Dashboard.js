@@ -6,6 +6,7 @@ import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from '
 import { NavLink, Redirect } from 'react-router-dom'
 import { history } from '../../../App';
 import { layDanhSachNDAction, xoaNDAction } from '../../../redux/actions/QuanLyNguoiDungAction';
+import styled from 'styled-components';
 
 
 
@@ -128,7 +129,7 @@ export default function Dashboard(props) {
       <button className='my-3 btn btn-primary'  onClick={() => {
         history.push('/admin/adduser')
       }} >Thêm Người Dùng</button>
-      <Search
+      <SearchStyled
         className='mb-4'
         placeholder="Search name..."
         size="large"
@@ -139,3 +140,9 @@ export default function Dashboard(props) {
     </div>
   )
 }
+// ant-input-group-addon
+const SearchStyled = styled(Search)`
+    .ant-input-group-addon{
+    background-color: #007bff;
+    }
+`

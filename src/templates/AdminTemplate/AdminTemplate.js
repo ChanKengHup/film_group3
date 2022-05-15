@@ -38,7 +38,7 @@ export const AdminTemplate = (props) => {
                     <div style={{ width: 40, height: 40, display: 'flex', justifyContent: 'center', alignItems: 'center', }} className='text-2xl ml-5 text-red-800 rounded-full bg-red-200'> {userLogin.taiKhoan.substr(0, 1)}
                      </div>
                     </button>
-                <button className='text-white ml-2' onClick={() => {
+                <button className='text-white ml-2 mr-3' onClick={() => {
                     localStorage.removeItem("LOGIN_USER");
                     localStorage.removeItem("TOKEN_MOVIE")
                     history.push('/');

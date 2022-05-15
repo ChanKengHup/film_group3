@@ -6,6 +6,7 @@ import { layDanhSachPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { xoaPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../App';
+import styled from 'styled-components';
 
 const { Search } = Input;
 
@@ -89,7 +90,7 @@ export default function Films() {
     dispatch(layDanhSachPhimAction(value))
   };
   function onChange(pagination, filters, sorter, extra) {
-    console.log('params', pagination, filters, sorter, extra);
+    // console.log('params', pagination, filters, sorter, extra);
   }
   return (
     <div>
@@ -97,7 +98,7 @@ export default function Films() {
       <Button className='my-3' type="primary" style={{ background: "#40a9ff" }} onClick={() => {
         history.push('/admin/films/addnew')
       }} >Thêm Phim</Button>
-      <Search
+      <SearchStyled
         className='mb-4'
         placeholder="Search..."
         size="large"
@@ -108,3 +109,8 @@ export default function Films() {
     </div>
   )
 }
+const SearchStyled = styled(Search)`
+    .ant-input-group-addon{
+    background-color: #007bff;
+    }
+`

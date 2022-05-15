@@ -13,6 +13,7 @@ import { LockOutlined, MailOutlined, PhoneOutlined, UserAddOutlined, UserOutline
 
 import { themNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import '../../../assets/style/addUser.css'
+import styled from 'styled-components';
 
 const AddUser = () => {
   const [componentSize, setComponentSize] = useState('default');
@@ -173,10 +174,16 @@ const AddUser = () => {
         </Select>
       </Form.Item>
       <Form.Item label="Tác Vụ">
-        <Button block htmlType='submit' type='primary' >Thêm người dùng</Button>
+        <ButtonStyled block htmlType='submit' type='primary'>Thêm người dùng</ButtonStyled>
       </Form.Item>
+       
     </Form>
   );
 };
-
+const ButtonStyled = styled(Button)`
+      color: #fff;
+      border-color: #1890ff !important;
+      background: #1890ff;
+    
+`
 export default AddUser

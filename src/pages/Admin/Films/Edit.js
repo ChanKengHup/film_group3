@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinPhimAction, capNhatPhimUploadAction } from '../../../redux/actions/QuanLyPhimAction';
 import { GROUP_ID } from '../../../services/TypeService';
 import { useEffect } from 'react';
+import styled from 'styled-components';
 
 const Edit = (props) => {
 
@@ -57,7 +58,6 @@ const Edit = (props) => {
 
     onSubmit: values => {
       values.maNhom = GROUP_ID
-      console.log(values);
       let formData = new FormData();
       for (let key in values) {
         if (key !== 'hinhAnh') {
@@ -148,13 +148,13 @@ const Edit = (props) => {
         <DatePicker style={{ width: '50%' }} format={'DD/MM/YYYY'} onChange={handeChangDatePicker} value={moment(formik.values.ngayKhoiChieu)} />
       </Form.Item>
       <Form.Item label="Đang chiếu">
-        <Switch onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />
+        <SwitchStyled onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />
       </Form.Item>
       <Form.Item label="Sắp chiếu">
-        <Switch onChange={handleChangeSwitch('sapChieu')} checked={formik.values.sapChieu} />
+        <SwitchStyled onChange={handleChangeSwitch('sapChieu')} checked={formik.values.sapChieu} />
       </Form.Item>
       <Form.Item label="Hot">
-        <Switch onChange={handleChangeSwitch('hot')} checked={formik.values.hot} />
+        <SwitchStyled onChange={handleChangeSwitch('hot')} checked={formik.values.hot} />
       </Form.Item>
 
       <Form.Item label="Số sao">
@@ -166,7 +166,7 @@ const Edit = (props) => {
         <img alt="" width={150} height={200} src={img === '' ? thongTinPhim.hinhAnh : img} />
       </Form.Item>
       <Form.Item label="Tác Vụ">
-        <Button htmlType='submit' type='primary'>Cập Nhật</Button>
+        <ButtonStyled style={{ width: '50%' }} block htmlType='submit' type='primary'>Cập Nhật</ButtonStyled>
       </Form.Item>
     </Form>
   );
@@ -175,4 +175,15 @@ const Edit = (props) => {
 export default Edit
 
 
-
+const ButtonStyled = styled(Button)`
+      color: #fff;
+      border-color: #1890ff !important;
+      background: #1890ff;
+    
+`
+const SwitchStyled = styled(Switch)`
+      color: #fff;
+      border-color: #1890ff !important;
+      background: #1890ff;
+    
+`

@@ -352,7 +352,6 @@ function KetQuaDatVe(props) {
     const dispatch = useDispatch()
     const { userLogin } = useSelector(state => state.LogReducer);
     const { thongTinTK } = useSelector(state => state.QuanLyNguoiDungReducer)
-    console.log(thongTinTK);
     useEffect(() => {
         const action = layThongTinTaiKhoanAction();
         dispatch(action)

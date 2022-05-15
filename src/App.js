@@ -26,6 +26,7 @@ function App() {
     <Router history={history}>
       <Loading />
       <div className="App">
+     
         <HomeTemplate path="/" component={Home} />
         <HomeTemplate path="/detail/:id" component={DetailDay} />
         <CheckoutTemlate path="/checkout/:id" component={Checkout} />
@@ -39,6 +40,7 @@ function App() {
           path="/admin/films/showtime/:id/:tenphim"
           component={ShowTime}
         />
+        
       </div>
     </Router>
 

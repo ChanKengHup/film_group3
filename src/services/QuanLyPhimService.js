@@ -22,7 +22,6 @@ class QuanLyPhimService {
   };
 
   xoaPhim = (maPhim) => { return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`) };
-
 }
 
 export const quanLyPhimService = new QuanLyPhimService();

@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import moment from 'moment';
 import { quanLyDatVeService } from '../../../services/QuanLyDatVeService';
 import { history } from '../../../App';
+import styled from 'styled-components';
 
 export default function ShowTime(props) {
 
@@ -109,10 +110,16 @@ export default function ShowTime(props) {
             <InputNumber onChange={onChangeInputNumber} />
           </Form.Item>
           <Form.Item label="Chức năng">
-            <Button type="primary" htmlType="submit">Tạo Lịch chiếu</Button>
+            <ButtonStyled type="primary" htmlType="submit">Tạo Lịch chiếu</ButtonStyled>
           </Form.Item>
         </div>
       </div>
     </Form>
   )
 }
+const ButtonStyled = styled(Button)`
+      color: #fff;
+      border-color: #1890ff !important;
+      background: #1890ff;
+    
+`

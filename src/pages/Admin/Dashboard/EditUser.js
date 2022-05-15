@@ -16,6 +16,7 @@ import { CapNhatThongTinNguoiDungAction, layThongTinNDAction } from '../../../re
 import { useSelector } from 'react-redux';
 
 import '../../../assets/style/addUser.css'
+import styled from 'styled-components';
 
 
 const EditUser = (props) => {
@@ -191,10 +192,15 @@ const EditUser = (props) => {
         </Select>
       </Form.Item>
       <Form.Item label="Tác Vụ">
-        <Button block htmlType='submit' type='primary' >Cập nhật người dùng</Button>
+        <ButtonStyled block htmlType='submit' type='primary' >Cập nhật người dùng</ButtonStyled>
       </Form.Item>
     </Form>
   );
 };
-
+const ButtonStyled = styled(Button)`
+      color: #fff;
+      border-color: #1890ff;
+      background: #1890ff;
+    
+`
 export default EditUser

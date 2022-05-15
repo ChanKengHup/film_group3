@@ -14,6 +14,7 @@ import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { themPhimUploadHinh } from '../../../redux/actions/QuanLyPhimAction';
 import { GROUP_ID } from '../../../services/TypeService';
+import styled from 'styled-components';
 
 
 const AddNew = () => {
@@ -47,7 +48,6 @@ const AddNew = () => {
     }),
     onSubmit: values => {
       values.maNhom = GROUP_ID
-      console.log(values);
       let formData = new FormData();
       for (let key in values) {
         if (key !== 'hinhAnh') {
@@ -155,10 +155,15 @@ const AddNew = () => {
         <img src={imgSrc} alt="" width={150} height={200}/>
       </Form.Item>
       <Form.Item label="Tác Vụ">
-        <Button htmlType='submit' type='primary'>Thêm Phim</Button>
+        <ButtonStyled style={{ width: '50%' }} block htmlType='submit' type='primary'>Thêm Phim</ButtonStyled>
       </Form.Item>
     </Form>
   );
 };
-
 export default AddNew
+const ButtonStyled = styled(Button)`
+      color: #fff;
+      border-color: #1890ff !important;
+      background: #1890ff;
+    
+`

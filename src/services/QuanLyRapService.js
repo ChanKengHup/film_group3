@@ -15,7 +15,6 @@ class QuanLyRapService {
   layThongTinCumRap =(maHeThongRap)=>{
     return http.get(`/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`)
   }
-
   layDanhSachRap = ()=> {
       return http.get('/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03')
   }
