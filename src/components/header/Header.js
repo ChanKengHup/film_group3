@@ -95,6 +95,7 @@ const HeaderStyled = styled.div`
     width: 90%;
     margin: 25px 5%;
     justify-content: space-between;
+    align-items: center;
 
     .brand {
       text-transform: uppercase;

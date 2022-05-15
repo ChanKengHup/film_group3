@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Route } from "react-router-dom"
 import { Fragment, useEffect } from "react"
 import Header from "../components/header/Header"
@@ -15,10 +16,29 @@ export const HomeTemplate = (props) => {
     return <Fragment>
       <Header />
       <HomeCarousel />
+=======
+import { Route } from "react-router-dom";
+import { Fragment } from "react";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
-      <props.component {...propsRoute} />
+export const HomeTemplate = (props) => {
+  return (
+    <Route
+      exact
+      path={props.path}
+      render={(propsRoute) => {
+        return (
+          <Fragment>
+            <Header />
 
-      <Footer />
-    </Fragment>
-  }} />
-}
+            <props.component {...propsRoute} />
+>>>>>>> 24805cdffd6ad19b204758e2b65a24e007e1ca1d
+
+            <Footer />
+          </Fragment>
+        );
+      }}
+    />
+  );
+};

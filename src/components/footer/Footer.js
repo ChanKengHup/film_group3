@@ -11,7 +11,7 @@ import {
 export default function Footer() {
   return (
     <FooterStyled>
-      <Row className="container align-center">
+      <Row className="align-center">
         <Col lg={8}>
           <div className="footer-left d-flex">
             <p className='footer-left-item'><a className='footer-link' href="#">About</a></p>
@@ -47,6 +47,8 @@ const FooterStyled = styled.div`
   background: #fff;
   padding: 40px 0;
   border-top: 1px solid #d8d8d870;
+  width: 90%;
+  margin: 0 auto;
 
   .footer-left {
     gap: 10px;
