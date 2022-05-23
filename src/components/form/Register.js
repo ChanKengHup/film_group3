@@ -100,7 +100,7 @@ export default function Register() {
             </div>
             <div className="form-group">
                 <label>Mã nhóm</label>
-                <input onChange={formik.handleChange} onBlur={formik.handleBlur} disabled value="GP03" type="text" name='maNhom' className="form-control" />
+                <input onChange={formik.handleChange} onBlur={formik.handleBlur} type="text" name='maNhom' className="form-control" />
                 {formik.touched.maNhom && formik.errors.maNhom ? (
                     <div className='alert alert-danger'>{formik.errors.maNhom}</div>
                 ) : null}
