@@ -22,7 +22,7 @@ const DetailDay = (props) => {
   const filmDetail = useSelector((state) => state.QuanLyPhimReducer.filmDetail);
 
   return (
-    <div className="">
+    <div>
       <div className="bg-slate-700 h-max p-t-120 p-b-80">
         <div className="grid grid-cols-12">
           <div className="col-span-5 col-start-3">

@@ -41,9 +41,12 @@ export default function MultipleRows(props) {
     className: "center variable-width",
     centerMode: true,
     infinite: true,
-    centerPadding: "60px",
+    centerPadding: "5px",
     slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
     speed: 500,
+    autoplaySpeed: 7000,
     rows: 1,
     slidesPerRow: 2,
     variableWidth: true,
@@ -60,17 +63,17 @@ export default function MultipleRows(props) {
   const [styleSap, setStyleSap] = useState(false);
 
   return (
-    <div>
+    <div className="container border-top border-bottom py-4 mt-4">
       <Button
         style={
           styleDang === sapChieu
             ? {
-                color: "#fff",
-                borderColor: " #1890ff",
-                background: "#1890ff",
-                textShadow: "0 -1px 0 rgb(0 0 0 / 12%)",
-                boxhadow: "0 2px 0 rgb(0 0 0 / 5%)",
-              }
+              color: "#fff",
+              borderColor: " #1890ff",
+              background: "#1890ff",
+              textShadow: "0 -1px 0 rgb(0 0 0 / 12%)",
+              boxhadow: "0 2px 0 rgb(0 0 0 / 5%)",
+            }
             : {}
         }
         className="mr-4"
@@ -90,12 +93,12 @@ export default function MultipleRows(props) {
           styleSap === dangChieu
             ? {}
             : {
-                color: "#fff",
-                borderColor: " #1890ff",
-                background: "#1890ff",
-                textShadow: "0 -1px 0 rgb(0 0 0 / 12%)",
-                boxhadow: "0 2px 0 rgb(0 0 0 / 5%)",
-              }
+              color: "#fff",
+              borderColor: " #1890ff",
+              background: "#1890ff",
+              textShadow: "0 -1px 0 rgb(0 0 0 / 12%)",
+              boxhadow: "0 2px 0 rgb(0 0 0 / 5%)",
+            }
         }
         onClick={() => {
           const action = {

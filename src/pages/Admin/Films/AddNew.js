@@ -4,7 +4,6 @@ import {
   Input,
   Radio,
   DatePicker,
-  InputNumber,
   Switch,
   Button,
 } from 'antd';
